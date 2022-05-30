@@ -38,3 +38,73 @@ h1 {
     text-align: center;
     margin-bottom: 5px;
 }
+
+.container2 {
+    border: 2px solid silver;
+    margin-top: 10px;
+}
+
+.container2 h2 {
+    color: rgb(13, 9, 73);
+    font-size: 2rem;
+    text-align: center;
+    font-weight: bold;
+}
+
+.tags {
+    color: green;
+    padding: 10px;
+    font-size: 1.3rem;
+    font-style: italic;
+}
+
+.container2 th {
+    width: 300px;
+    border-right: 2px solid black;
+    text-align: center;
+    font-size: 1.3rem;
+    font-family: 'Times New Roman', Times, serif;
+    background-color: red;
+    color: wheat;
+}
+
+.info {
+    width: 300px;
+    border-right: 2px solid rgb(22, 9, 9);
+    text-align: center;
+    font-size: 1.3rem;
+    font-family: 'Times New Roman', Times, serif;
+    background-color: rgb(12, 235, 124);
+    color: wheat;
+}
+
+.container2 table tr td p {
+    color: red;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 1rem;
+    background-color: aliceblue;
+    border: 1.6px solid silver;
+    border-radius: 10px;
+    width: 200px;
+    align-items: center;
+}
+
+.container2 table tr td p span {
+    color: white;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 1rem;
+    background-color: rgb(46, 240, 88);
+    border: 1.6px solid silver;
+    border-radius: 6px;
+    align-items: center;
+    font-weight: bold;
+}
+
+.btn-group {
+    color: rgb(73, 31, 31);
+    font-size: 2rem;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+    background-color: rgb(125, 221, 125);
+    margin-left: 50px;
+}
