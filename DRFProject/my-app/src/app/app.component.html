@@ -1,0 +1,160 @@
+<!doctype html>{% load static %}
+<html lang="en">
+<style>
+    .-pagination .ngx-pagination .current {
+        background: red;
+    }
+</style>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Home</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+</head>
+
+<body>
+    <h1>Welcome To DRF Project </h1>
+    <form method="GET">
+
+        <div class="container">
+            <form action="" method="GET"></form>
+            <label for="exampleFormControlInput1" class="form-label">Serch From Stack overflow</label>
+            <input type="input" class="form-control" id="exampleFormControlInput1" placeholder="Search" name="search">
+            <div class="sub"><input class="btn btn-primary" type="submit" value="Search"></div>
+    </form>
+    </div>
+    <div class="container">
+        <form action="" method="GET">
+            <table class="td">
+                <tr>
+                    <td> <label for="param-page" class="col-form-label" name="page">Page</label>
+                        <input type="text"></td>
+                    <td><label for="param-page" class="col-form-label" name="page-size">Page Size</label>
+                        <input type="text"></td>
+                    <td><label for="param-page" class="col-form-label" name="fromdate">From Date</label>
+                        <input type="date"></td>
+                    </td>
+                </tr>
+            </table>
+            <table>
+                </tr>
+                <td> <label for="param-page" class="col-form-label" name="todate">todate</label>
+                    <input type="date"></td>
+                <td>
+                    <label for="param-order" class="col-form-label" name="order">order</label><select>
+              <option >desc</option>
+              <option >asc</option>
+          </select></td>
+                <td><label for="param-page" class="col-form-label" name="fromdate">min</label>
+                    <input type="date"></td>
+                </td>
+                </tr>
+            </table>
+            <table>
+                </tr>
+                <td> <label for="param-page" class="col-form-label" name="page">Page</label>
+                    <input type="date"></td>
+                <td>
+                    <label for="param-sort" class="col-form-label" name="order">order</label><select>
+              <option >activity</option>
+              <option >votes</option>
+              <option >cretion</option>
+              <option >relevance</option>
+          </select></td>
+                <td><label class="col-form-label" name="tagged">tagged</label>
+                    <input type="input"></td>
+                </td>
+                </tr>
+            </table>
+            <table>
+                <tr>
+                    <td> <label for="nottagged" class="col-form-label" name="nottagged">nottagged</label>
+                        <input type="text"></td>
+                    <td><label for="intitle" class="col-form-label" name="intitle">intitle</label>
+                        <input type="text"></td>
+                </tr>
+            </table>
+            <div class="sub"><input class="btn btn-primary" type="submit" value="Sort"></div>
+        </form>
+    </div>
+
+
+    <ul>
+        <div *ngFor="let item of collection | paginate: { id: 'foo',
+        itemsPerPage: 5,
+        currentPage: 5,
+        totalItems: {{no.lenght}} }">
+            <li *ngFor="let item of collection | paginate: { itemsPerPage: 5, currentPage: p }">
+                <div>
+                    <h2>{{i.title}}</h2>
+                    <div class="tags">Tags {{i.tags}} </div>
+                    <div>
+                        <table>
+                            <th>Account Id</th>
+                            <th>Reputation</th>
+                            <th>User id</th>
+                            <th>User Type </th>
+                            <th>Profile Image</th>
+                            <th>Name</th>
+                            <th>Link</th>
+                            <tr>
+                                <td>{{i.owner.account_id}}</td>
+                                <td>{{i.owner.reputation}}</td>
+                                <td>{{i.owner.user_id}}</td>
+                                <td>{{i.owner.user_type}}</td>
+                                <td><a href="{{i.owner.profile_image}}">Profile</a></td>
+                                <td>{{i.owner.display_name}}</td>
+                                <td><a href="{{i.owner.link}}">Link</a></td>
+
+                            </tr>
+                        </table>
+                    </div>
+
+                </div>
+                <table>
+                    <tr>
+                        <td>
+                            <p>Is Answered : {{i.is_answered}}</p>
+                        </td>
+                        <td>
+                            <p> Count {{i.view_count}}</p>
+                        </td>
+                        <td>
+                            <p> Score : {{i.score}}</p>
+                        </td>
+                        <td>
+                            <p> Last Activity :{{i.last_activity_date}}</p>
+                        </td>
+                        <td>
+                            <p> Creation Date {{i.creation_date}}</p>
+                        </td>
+                        <td>
+                            <p>Question Id {{i.question_id}}</p>
+                        </td>
+                        <td>
+                            <p> Content Licence {{i.content_license}}</p>
+                        </td>
+                        <td><a href="{{i.link}}" target="_blank">Go to Detail</a></td>
+
+
+                    </tr>
+                </table>
+            </li>{% endfor %}
+    </ul>
+    </div>
+    <pagination-controls class="my-pagination" id="some_id" (pageChange)="pageChanged($event)" (pageBoundsCorrection)="pageChanged($event)" maxSize="9" directionLinks="true" autoHide="true" responsive="true" previousLabel="Previous" nextLabel="Next" screenReaderPaginationLabel="Pagination"
+        screenReaderPageLabel="page" screenReaderCurrentLabel="You're on page">
+    </pagination-controls>
+
+
+
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+</body>
+
+</html>

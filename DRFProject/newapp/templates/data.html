@@ -1,0 +1,161 @@
+<!doctype html>{% load static %}
+<html lang="en">
+    
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Home</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static "css/home.css"%}">
+  </head>
+<body><h1>Welcome To DRF Project </h1>
+    <form method="get">
+      <div class="container">
+          <form action=""method="GET">
+        <table class="td">
+            <tr>
+                <td> <label for="param-pageno" class="col-form-label" >Page</label>
+                    <input type="text" name="pageno"></td>
+                <td><label for="param-page-size" class="col-form-label"> Page Size</label>
+                  <input type="text" name="page-size"></td>
+                <td><label for="param-fromdate" class="col-form-label" >From Date</label>
+                  <input type="date" name="fromdate"></td></td>
+            </tr>
+            </table>
+            <table> 
+          </tr>
+          <td> <label for="param-todate" class="col-form-label" >todate</label>
+              <input type="date" name="todate"></td>
+          <td>
+              <label for="param-order" class="col-form-label" name="order">order</label><select>
+              <option >desc</option>
+              <option >asc</option>
+          </select></td>
+          <td><label for="param-min" class="col-form-label">min</label>
+            <input type="date" name="min"></td></td>
+          </tr>
+        </table>
+        <table> 
+      </tr>
+      <td><label for="param-max" class="col-form-label">max</label>
+        <input type="date" name="max"></td>
+      <td> <label for="param-page" class="col-form-label">Page</label>
+          <input type="date" name="page"></td>
+          <td>
+              <label for="param-sort" class="col-form-label" name="sort">Sort</label><select>
+              <option >activity</option>
+              <option >votes</option>
+              <option >cretion</option>
+              <option >relevance</option>
+          </select></td>
+      
+      </tr>
+    </table>
+    <table>
+      <tr>
+        <td><label for='param-tagged'  class="col-form-label" >tagged</label>
+          <input type="input" name="tagged"></td>
+          <td> <label for="nottagged" class="col-form-label" >nottagged</label>
+              <input type="text" name="nottagged"></td>
+          <td><label for="title" class="col-form-label" >etitle</label>
+            <input type="text" name="title"></td>
+      </tr>
+      </table>
+      <table>
+        <tr>
+          <td><label for="q" class="col-form-label" >Q</label>
+            <input type="text" name="q"></td>
+            <td>
+              <label for="param-accepted" class="col-form-label" name="accepted">Sort</label><select>
+              <option >True</option>
+              <option >False</option>
+              
+          </select></td>
+            <td><label for="answers" class="col-form-label" >Answers</label>
+              <input type="text" name="answers"></td>
+        </tr>
+      </table>
+      <table> <tr>
+        <td><label for="body" class="col-form-label">Body</label>
+          <input type="text"  name="body"></td>
+          <td>
+            <label for="param-closed" class="col-form-label" name="closed">Closed</label><select>
+            <option >True</option>
+            <option >False</option>
+            
+        </select></td>
+        <td>
+          <label for="param-migrated" class="col-form-label" name="migrated">Migrated</label><select>
+          <option >True</option>
+          <option >False</option>
+          
+      </select></td>
+      </tr></table><table>
+        <tr><td><label for="notice" class="col-form-label" >Notice</label>
+          <input type="text" name="notice"></td>
+          <td><label for="user" class="col-form-label" >User</label>
+            <input type="text" name="user"></td>
+            <td><label for="url" class="col-form-label" >Url</label>
+              <input type="text" name="url"></td></tr>
+       
+          <table> <tr>
+            <td><label for="views" class="col-form-label" >Views</label>
+              <input type="text"name="views"></td>
+              <td>
+                <label for="param-wiki" class="col-form-label" name="wiki">Closed</label><select>
+                <option >True</option>
+                <option >False</option>
+        </tr>
+      </table>
+      
+      <div><input class="btn btn-info btn-lg" type="submit" value=" Search "></div>
+    </form>
+    </div>
+ 
+  
+    <div>
+      {% for i in post %}
+        <h2>{{i.title}}</h2>
+        <div class="tags">Tags {{i.tags}} </div>
+        <div><table>
+            <th>Account Id</th>
+            <th>Reputation</th>
+            <th>User id</th>
+            <th>User Type </th>
+            <th>Profile Image</th>
+            <th>Name</th> 
+            <th>Link</th>
+            <tr>
+                <td>{{i.owner.account_id}}</td>
+                <td>{{i.owner.reputation}}</td>
+                <td>{{i.owner.user_id}}</td>
+                <td>{{i.owner.user_type}}</td>
+                <td><a href="{{i.owner.profile_image}}">Profile</a></td>
+                <td>{{i.owner.display_name}}</td>
+                <td><a href="{{i.owner.link}}">Link</a></td>
+                
+            </tr>
+        </table>
+        </div>
+
+    </div>
+    <table>
+    <tr>
+            <td><p>Is Answered :    {{i.is_answered}}</p></td>
+            <td><p> Count   {{i.view_count}}</p></td>
+            <td><p> Score : {{i.score}}</p></td>
+            <td><p> Last Activity :{{i.last_activity_date}}</p></td>
+            <td><p> Creation Date   {{i.creation_date}}</p></td>
+            <td><p>Question Id {{i.question_id}}</p></td>
+            <td><p> Content Licence {{i.content_license}}</p></td>
+            <td><a href="{{i.link}}" target="_blank">Go to Detail</a></td>
+            
+                   
+        </tr>
+    </table>
+        {% endfor %}
+        {% include 'page.html' with page=post  %}
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+</body>
+</html>
